@@ -15,8 +15,6 @@ Original file is located at
 # Install Necessary Libraries
 """
 
-! pip install pygithub langchain langchain-community openai tiktoken pinecone-client langchain_pinecone sentence-transformers
-
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from langchain_pinecone import PineconeVectorStore
