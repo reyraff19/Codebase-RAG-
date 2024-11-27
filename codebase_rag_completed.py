@@ -46,7 +46,7 @@ def clone_repository(repo_url):
     Repo.clone_from(repo_url, str(repo_path))
     return str(repo_path)
 
-path = clone_repository("https://github.com/reyraff19/SecureAgent")
+path = clone_repository("https://github.com/CoderAgent/SecureAgent")
 
 print(path)
 
@@ -179,7 +179,7 @@ vectorstore = PineconeVectorStore.from_documents(
     documents=documents,
     embedding=HuggingFaceEmbeddings(),
     index_name="codebase-rag",
-    namespace="https://github.com/reyraff19/SecureAgent"
+    namespace="https://github.com/CoderAgent/SecureAgent"
 )
 
 
@@ -206,7 +206,7 @@ raw_query_embedding = get_huggingface_embeddings(query)
 raw_query_embedding
 
 # Feel free to change the "top_k" parameter to be a higher or lower number
-top_matches = pinecone_index.query(vector=raw_query_embedding.tolist(), top_k=8, include_metadata=True, namespace="https://github.com/reyraff19/SecureAgent")
+top_matches = pinecone_index.query(vector=raw_query_embedding.tolist(), top_k=8, include_metadata=True, namespace="https://github.com/CoderAgent/SecureAgent")
 
 top_matches
 
@@ -244,7 +244,7 @@ import streamlit as st
 def perform_rag(query):
     raw_query_embedding = get_huggingface_embeddings(query)
 
-    top_matches = pinecone_index.query(vector=raw_query_embedding.tolist(), top_k=5, include_metadata=True, namespace="https://github.com/reyraff19/SecureAgent")
+    top_matches = pinecone_index.query(vector=raw_query_embedding.tolist(), top_k=5, include_metadata=True, namespace="https://github.com/CoderAgent/SecureAgent")
 
     # Get the list of retrieved texts
     contexts = [item['metadata']['text'] for item in top_matches['matches']]
